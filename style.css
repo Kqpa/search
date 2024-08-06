@@ -8,9 +8,7 @@ body {
     background-color: #1b1f23; /* Dark background color */
     color: #e0e3e8; /* Light text color */
 }
-.container {
-    text-align: center;
-}
+
 input[type="text"] {
     padding: 10px;
     font-size: 16px;
@@ -33,3 +31,28 @@ button {
 button:hover {
     background-color: #e0e3e8; /* Button hover color */
 }
+
+h1 { 
+    text-align: center;
+}
+
+
+
+  a:link, a:visited {
+    color: white;
+    text-decoration: none;
+    display: inline-block;  
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+  
+
+  input {
+    border: solid #e0e3e8;
+    padding: 2px;
+    width: 100%;
+  }

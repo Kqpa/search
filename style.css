@@ -8,9 +8,7 @@ body {
     background-color: #1b1f23; /* Dark background color */
     color: #e0e3e8; /* Light text color */
 }
-.container {
-    text-align: center;
-}
+
 input[type="text"] {
     padding: 10px;
     font-size: 16px;
@@ -33,3 +31,36 @@ button {
 button:hover {
     background-color: #e0e3e8; /* Button hover color */
 }
+
+h1 { 
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+    margin-top: 1rem;
+    padding: 0;
+
+  }
+
+  a:link, a:visited {
+    border: solid #e0e3e8;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+  
+  a:hover, a:active {
+    background-color: #e0e3e8;
+    color:black;
+  }
+
+  input {
+    border: solid #e0e3e8;
+    padding: 2px;
+    width: 100%;
+  }

@@ -1,25 +1,35 @@
-const APIUrl = `http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=`
+// Select the input field and the output div
+const API = `https://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=`;
 
-window.onload = async function () {
+const queryInput = document.getElementById('queryInput');
 
-    /* event listener */
-    document.querySelector("#searchInput").addEventListener('change', fetchQueries);
+// Add an event listener to the input field
+queryInput.addEventListener('input', function () {
+    // Get the current value of the input field
+    const currentValue = queryInput.value;
+    // Reset the field,
+    try {
+        fetch(`${API}${currentValue}`).then((response) => {
+            console.log(response);
 
-    /* function */
-    async function fetchQueries() {
-        const request = await fetch(`${APIUrl}${document.querySelector("#searchInput").value}`).catch(err => console.log(`ERR: ${err}`));
-        const res = await request.json().catch(err => console.log(`ERR: ${err}`));
-        console.log(res);
+            response.json().then((data) => {
+                const queries = data[1];
+                document.querySelector("#queries").innerHTML = "";
+
+                queries.forEach(suggestion => {
+
+                    document.querySelector("#queries").innerHTML += `<li><a href="https://www.youtube.com/results?search_query=${encodeURIComponent(suggestion)}">${suggestion}</a></li>`
+                });
+            })
+        })
+    } catch (error) {
+        console.error(error.message);
     }
-}
-
-
-
-document.querySelector('#searchForm').addEventListener('submit', function (event) {
-    event.preventDefault();
-    const query = document.querySelector('#searchInput').value;
-    const url = `https://www.youtube.com/results?search_query=${encodeURIComponent(query)}`;
-    window.location.href = url;
 });
 
 
+function search() {
+    const query = document.getElementById('queryInput').value;
+    const url = 'https://www.youtube.com/results?search_query=' + encodeURIComponent(query);
+    window.location.href = url;
+}

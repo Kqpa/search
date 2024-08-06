@@ -10,14 +10,11 @@ queryInput.addEventListener('input', function () {
     // Reset the field,
     try {
         fetch(`${API}${currentValue}`).then((response) => {
-            console.log(response);
-
             response.json().then((data) => {
                 const queries = data[1];
+
                 document.querySelector("#queries").innerHTML = "";
-
                 queries.forEach(suggestion => {
-
                     document.querySelector("#queries").innerHTML += `<li><a href="https://www.youtube.com/results?search_query=${encodeURIComponent(suggestion)}">${suggestion}</a></li>`
                 });
             })
